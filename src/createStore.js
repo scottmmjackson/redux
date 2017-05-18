@@ -1,4 +1,3 @@
-import isPlainObject from 'lodash/isPlainObject'
 import $$observable from 'symbol-observable'
 
 /**
@@ -147,12 +146,6 @@ export default function createStore(reducer, preloadedState, enhancer) {
    * return something else (for example, a Promise you can await).
    */
   function dispatch(action) {
-    if (!isPlainObject(action)) {
-      throw new Error(
-        'Actions must be plain objects. ' +
-        'Use custom middleware for async actions.'
-      )
-    }
 
     if (typeof action.type === 'undefined') {
       throw new Error(

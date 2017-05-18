@@ -414,19 +414,6 @@ describe('createStore', () => {
     store.dispatch(addTodo('Hello'))
   })
 
-  it('only accepts plain object actions', () => {
-    const store = createStore(reducers.todos)
-    expect(() =>
-      store.dispatch(unknownAction())
-    ).not.toThrow()
-
-    function AwesomeMap() { }
-    [ null, undefined, 42, 'hey', new AwesomeMap() ].forEach(nonObject =>
-      expect(() =>
-        store.dispatch(nonObject)
-      ).toThrow(/plain/)
-    )
-  })
 
   it('handles nested dispatches gracefully', () => {
     function foo(state = 0, action) {

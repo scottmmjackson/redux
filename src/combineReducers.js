@@ -1,5 +1,4 @@
 import { ActionTypes } from './createStore'
-import isPlainObject from 'lodash/isPlainObject'
 import warning from './utils/warning'
 
 function getUndefinedStateErrorMessage(key, action) {
@@ -23,15 +22,6 @@ function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, une
     return (
       'Store does not have a valid reducer. Make sure the argument passed ' +
       'to combineReducers is an object whose values are reducers.'
-    )
-  }
-
-  if (!isPlainObject(inputState)) {
-    return (
-      `The ${argumentName} has unexpected type of "` +
-      ({}).toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] +
-      `". Expected argument to be an object with the following ` +
-      `keys: "${reducerKeys.join('", "')}"`
     )
   }
 
